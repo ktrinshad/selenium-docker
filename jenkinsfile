@@ -4,7 +4,7 @@ pipeline {
         stage('Build Jar') {
 
             steps {
-                sh "mvn clean package -DskipTests"
+                sh "/Applications/apache-maven-3.9.2/bin/mvn clean package -DskipTests"
             }
         }
         stage('Build Image') {

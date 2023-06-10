@@ -20,9 +20,9 @@ pipeline {
                 sh "docker login --username=${user} --password+${pass}"
                 sh "docker push rinshadkt/selenium-docker:latest"
 
-			        }
-                }
+			    }
             }
         }
-      }
+    }
+}
 

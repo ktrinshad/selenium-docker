@@ -1,19 +1,5 @@
 pipeline {
     agent any
-        tools {
-            maven 'Maven 3.3.9'
-            jdk 'jdk8'
-        }
-            stages {
-                stage ('Initialize') {
-                    steps {
-                        sh '''
-                            echo "PATH = ${PATH}"
-                            echo "M2_HOME = ${M2_HOME}"
-                        '''
-                    }
-                }
-                }
     stages {
         stage('Build Jar') {
 
@@ -22,6 +8,12 @@ pipeline {
             }
         }
         stage('Build Image') {
+        agent {
+                        docker {
+                            image 'maven:3-alpine'
+                            args '-v $HOME/.m2:/root/.m2'
+                        }
+                    }
             steps {
 
                 	sh "docker build -t='rinshadkt/selenium-docker' ."

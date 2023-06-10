@@ -21,7 +21,7 @@ pipeline {
                 sh "docker push rinshadkt/selenium-docker:latest"
 
 			    }
-            }
+
         }
     }
 }
